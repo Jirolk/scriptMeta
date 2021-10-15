@@ -9,6 +9,12 @@ empreNombre=[]
 
 ventana= tk.Tk()
 
+def  informacion():
+    os.system("cls")
+    print ("\n Datos a tenes encuenta para extraer la planilla\n    NOME\n    DataNascimento\n    Sexo\n    Nacionalidade\n    NaturalidadeUF\n    Empresa\n    Naturalidade \n    Bairro ")
+    
+
+
 try:
         
     #carga del documento
@@ -26,7 +32,9 @@ try:
     empreNombre.sort()
     
 except OSError as error:
+    informacion()
     if messagebox.showerror(message=error,title="Algo salío Mal"):
+        
         ventana.destroy()
         
 def salu():
@@ -246,10 +254,7 @@ def porDepartamento():
 def limpiarPantalla():
     os.system("cls")
     
-def  informacion():
-    os.system("cls")
-    print ("\n Datos a tenes encuenta para extraer la planilla\n    NOME\n    DataNascimento\n    Sexo\n    Nacionalidade\n    NaturalidadeUF\n    Empresa\n    Naturalidade \n    Bairro ")
-    
+
 ventana.title("Reportes Meta-X")
 ventana.geometry("300x200")
 
