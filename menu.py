@@ -59,14 +59,13 @@ def sexoEmpresa(empresa):
             and hoja.cell_value(i,2)== 'Masculino'):
             empresaM+=1;
 
-    print("\n============================================")
-    print(" La Empresa ", empresa," \n\t\ttiene Mujeres: ", empresaF)
-    print("\ttiene Hombres: ", empresaM)
-    print("\tTotal de Colaboradores: ", empresaM+empresaF)
-    print("============================================\n")
+    print("\n\t============================================")
+    print("\t  La Empresa ", empresa," \n\t\ttiene Mujeres: ", empresaF)
+    print("\t  tiene Hombres: ", empresaM)
+    print("\t  Total de Colaboradores: ", empresaM+empresaF)
+    print("\t============================================\n")
     # input("Oprima enter para continuar: ")
     #os.system("pause")
-
     
 def listarEmpresas():
     os.system("cls")
@@ -74,7 +73,6 @@ def listarEmpresas():
         
         if(empreNombre[i] != "Empresa"):
              sexoEmpresa(empreNombre[i])
-
 
 def manodeObra():
     sexoF=0;
@@ -195,31 +193,64 @@ def manodeObra():
 
 def porDepartamento():
     con=0; horqueta=0; belen=0; loreto=0; sanLazaro=0; jose=0;
-    concepM=0; horquetaM=0; belenM=0; loretoM=0; sanLazaroM=0; joseM=0;
-    concepF=0
+    concepM=0; horquetaM=0; belenM=0; loretoM=0; sanLazaroM=0; joseM=0; concepF=0; arroyito=0; azotey=0; paso=0; alfredo=0; carlos=0; yby=0; pasoHorqueta=0; total=0; lazaro=0
+    
     for i in range(0,hoja.nrows) :
             #cuenta por ciudades.
-        if(hoja.cell_value(i,7) == 'CONCEPCIÓN'):
+        if(hoja.cell_value(i,6) == 'CONCEPCIÓN'):
             con+=1
-            
-        elif(hoja.cell_value(i,7) == 'HORQUETA'):
+        elif(hoja.cell_value(i,6) == 'HORQUETA'):
             horqueta+=1
-        elif(hoja.cell_value(i,7) == 'BELÉN'):
+        elif(hoja.cell_value(i,6) == 'BELÉN'):
             belen+=1;  
-        elif(hoja.cell_value(i,7)== 'LORETO'):
+        elif(hoja.cell_value(i,6)== 'LORETO'):
             loreto+=1
-        elif(hoja.cell_value(i,7)== 'SAN LAZARO'):
-            sanLazaro+=1
-        elif(hoja.cell_value(i,7)== 'SARGENTO JOSÉ FÉLIX LÓPEZ'):
-            jose+=1        
+        elif(hoja.cell_value(i,6)== 'SARGENTO JOSÉ FÉLIX LÓPEZ'):
+            jose+=1
+        elif(hoja.cell_value(i,6) == 'ARROYITO'):
+            arroyito+=1        
+        elif(hoja.cell_value(i,6)=='AZOTEY'):
+            azotey+=1    
+        elif(hoja.cell_value(i,6)=='PASO BARRETO'):
+            paso+=1
+        elif(hoja.cell_value(i,6)=='SAN ALFREDO'):
+            alfredo+=1
+        elif(hoja.cell_value(i,6)=='SAN CARLOS DEL APA'):
+            carlos+=1
+        elif(hoja.cell_value(i,6)=='YBY YAÚ'):
+            yby+=1
+        elif(hoja.cell_value(i,6)=='PASO HORQUETA'):
+            pasoHorqueta+=1
+        elif(hoja.cell_value(i,6)=='SAN LÁZARO'):
+            lazaro+=1
+    os.system("cls")
+    print("\t\t\n Detalles de Mano de obra por Distrito de Concepcion:")
+    if con>0: print("\n\t Concepción: ", con)
+    if horqueta>0: print("\n\t Horqueta: ", horqueta)
+    if belen>0: print("\n\t Belén: ", belen)
+    if loreto>0: print("\n\t Loreto: ", loreto)
+    if sanLazaro>0: print("\n\t Horqueta: ", sanLazaro)
+    if jose>0: print("\n\t Sargento José Félix: ", jose)
+    if arroyito>0: print("\n\t Arroyito: ", arroyito)
+    if azotey>0: print("\n\t Azotey: ", azotey)
+    if paso>0: print("\n\t Paso Barreto: ", paso)
+    if alfredo>0: print("\n\t San Alfredo: ", alfredo)
+    if carlos>0: print("\n\t San Carlos del Apa: ", carlos)
+    if yby>0: print("\n\t Yby Yaú: ", yby)
+    if pasoHorqueta>0: print("\n\t Paso Horqueta: ", pasoHorqueta)
+    if lazaro>0: print("\n\t San Lazáro: ", lazaro)
     
-    
-            
+    total=con+horqueta+belen+loreto+sanLazaro+jose+arroyito+azotey+paso+alfredo+carlos+yby+pasoHorqueta+pasoHorqueta+lazaro
+    print("\n\n\tTotal Departamento de Concepción: ", total)
+   
 def limpiarPantalla():
     os.system("cls")
-    print ("\n Datos a tenes encuenta para extraer la planilla\n    NOME\n    Sexo\n    DataNascimento\n    Nacionalidade\n    NaturalidadeUF\n    Empresa\n    Naturalidade \n    Bairro ")
     
-ventana.title("Reportes Meta-Xs")
+def  informacion():
+    os.system("cls")
+    print ("\n Datos a tenes encuenta para extraer la planilla\n    NOME\n    DataNascimento\n    Sexo\n    Nacionalidade\n    NaturalidadeUF\n    Empresa\n    Naturalidade \n    Bairro ")
+    
+ventana.title("Reportes Meta-X")
 ventana.geometry("300x200")
 
 btn1 = tk.Button(ventana, text="Ver Empresas", command=verEmpresas).pack(expand=True, fill=tk.BOTH)
@@ -228,6 +259,10 @@ btn2 = tk.Button(ventana, text="Listar Empresas", command=listarEmpresas).pack(e
 
 btn3 = tk.Button(ventana, text="Ver Mano de Obra", command=manodeObra).pack(expand=True, fill=tk.BOTH)
 btn4 = tk.Button(ventana, text="Limpiar Pantalla", command=limpiarPantalla).pack(expand=True, fill=tk.BOTH)
-btn4 = tk.Button(ventana, text="Salir", command=salir).pack(expand=True, fill=tk.BOTH)
+btn5 = tk.Button(ventana, text="Concepcion Mano de Obra", command=porDepartamento).pack(expand=True, fill=tk.BOTH)
+btn6 = tk.Button(ventana, text="Información", command=informacion).pack(expand=True, fill=tk.BOTH)
+
+btn7 = tk.Button(ventana, text="Salir", command=salir).pack(expand=True, fill=tk.BOTH)
+
 os.system("mode con: cols=80")
 ventana.mainloop()
